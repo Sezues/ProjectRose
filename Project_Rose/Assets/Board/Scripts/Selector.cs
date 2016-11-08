@@ -10,10 +10,20 @@ public class Selector : MonoBehaviour {
     public float zeroX;
     public float zeroY;
 
-    private bool grabbedPiece = false;
+    public bool grabbedPiece = false;
+    public GameObject theGrabbedPiece = null;
+
+    public enum whatTypeOfPiece
+    {
+        Leader,
+        Attacker
+    }
+
+    public whatTypeOfPiece typeOfPiece;
 
     public Material blue;
     public Material red;
+    public Material yellow;
 
     public void setBlue()
     {
@@ -23,6 +33,11 @@ public class Selector : MonoBehaviour {
     public void setRed()
     {
         this.GetComponent<Renderer>().material = red;
+    }
+
+    public void setYellow()
+    {
+        this.GetComponent<Renderer>().material = yellow;
     }
 
     public void setPosition(int X, int Y)
@@ -65,16 +80,50 @@ public class Selector : MonoBehaviour {
         {
             string isTherePiece = Manager.instance.boardLocation[xLocation, yLocation].GetComponent<MapLocations>().whatsInThis();
 
-            if(isTherePiece != "empty")
+            if (isTherePiece != "empty" && grabbedPiece == false)
             {
-                if(isTherePiece == "Player1Leader" || isTherePiece == "Player2Leader")
+                if(isTherePiece == "player1Leader" || isTherePiece == "player2Leader")
                 {
+                    if (isTherePiece == "player1Leader" && Manager.instance.whosTurn == Manager.playerTurns.Player1Turn)
+                    {
+                        print(isTherePiece);
+                        grabbedPiece = true;
+                        theGrabbedPiece = Manager.instance.boardLocation[xLocation, yLocation].GetComponent<MapLocations>().currentObject;
+                        typeOfPiece = whatTypeOfPiece.Leader;
+                        setYellow();
+                    }
 
+                    if (isTherePiece == "player2Leader" && Manager.instance.whosTurn == Manager.playerTurns.Player2Turn)
+                    {
+                        grabbedPiece = true;
+                        theGrabbedPiece = Manager.instance.boardLocation[xLocation, yLocation].GetComponent<MapLocations>().currentObject;
+                        typeOfPiece = whatTypeOfPiece.Leader;
+                        setYellow();
+                    }
                 }
 
                 if (isTherePiece == "Player1Attacker" || isTherePiece == "Player2Attacker")
                 {
 
+                }
+            }else if(isTherePiece == "empty" && grabbedPiece == true)
+            {
+                if(typeOfPiece == whatTypeOfPiece.Leader)
+                {
+                    int tempX = theGrabbedPiece.GetComponent<Leaders>().xLocation;
+                    int tempY = theGrabbedPiece.GetComponent<Leaders>().yLocation;
+                    Manager.instance.boardLocation[tempX, tempY].GetComponent<MapLocations>().setEmpty();
+                    theGrabbedPiece.GetComponent<Leaders>().setPosition(xLocation, yLocation);
+                    grabbedPiece = false;
+                    theGrabbedPiece = null;
+                    if(Manager.instance.whosTurn == Manager.playerTurns.Player1Turn)
+                    {
+                        setBlue();
+                    }
+                    else
+                    {
+                        setRed();
+                    }
                 }
             }
         }

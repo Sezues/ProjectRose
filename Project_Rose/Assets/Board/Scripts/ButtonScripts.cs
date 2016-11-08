@@ -24,5 +24,8 @@ public class ButtonScripts : MonoBehaviour {
             Manager.instance.selector.GetComponent<Selector>().setBlue();
 
         }
+
+        Manager.instance.selector.GetComponent<Selector>().grabbedPiece = false;
+        Manager.instance.selector.GetComponent<Selector>().theGrabbedPiece = null;
     }
 }

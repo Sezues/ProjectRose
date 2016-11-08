@@ -538,6 +538,11 @@ Prefab:
       propertyPath: red
       value: 
       objectReference: {fileID: 2100000, guid: b66b2d796ed9d5b4091d4da8f7a341d1, type: 2}
+    - target: {fileID: 114000011410414568, guid: 712bdb82f7d409f4483d28cd74fb8dbd,
+        type: 2}
+      propertyPath: yellow
+      value: 
+      objectReference: {fileID: 2100000, guid: 21eaee37b4807b248a499e47df4c5dd8, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 712bdb82f7d409f4483d28cd74fb8dbd, type: 2}
   m_IsPrefabParent: 0
@@ -684,7 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
