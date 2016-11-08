@@ -16,6 +16,10 @@ public class Manager : MonoBehaviour {
 
     public GameObject mapPiece; //prefab
 
+    public GameObject player1Leader;
+    public GameObject player2Leader;
+    public GameObject selector;
+
     public enum playerTurns
     {
         Player1Turn,
@@ -42,7 +46,8 @@ public class Manager : MonoBehaviour {
     private void setup()
     {
         initializeArray();
-        loadMap();  
+        loadMap();
+        selector.GetComponent<Selector>().setPosition(3, 0);
     }
 
     private void initializeArray()

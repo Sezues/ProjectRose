@@ -10,7 +10,20 @@ public class Selector : MonoBehaviour {
     public float zeroX;
     public float zeroY;
 
-   
+    private bool grabbedPiece = false;
+
+    public Material blue;
+    public Material red;
+
+    public void setBlue()
+    {
+        this.GetComponent<Renderer>().material = blue;
+    }
+
+    public void setRed()
+    {
+        this.GetComponent<Renderer>().material = red;
+    }
 
     public void setPosition(int X, int Y)
     {
