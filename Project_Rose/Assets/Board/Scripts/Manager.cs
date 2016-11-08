@@ -16,6 +16,14 @@ public class Manager : MonoBehaviour {
 
     public GameObject mapPiece; //prefab
 
+    public enum playerTurns
+    {
+        Player1Turn,
+        Player2Turn
+    }
+
+    public playerTurns whosTurn = playerTurns.Player1Turn;
+
     // Use this for initialization
     void Awake () {
         if (instance == null)

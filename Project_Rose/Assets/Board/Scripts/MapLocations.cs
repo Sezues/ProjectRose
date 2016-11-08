@@ -6,6 +6,8 @@ public class MapLocations : MonoBehaviour {
     public float xLocation = 0;
     public float yLocation = 0;
 
+    public GameObject currentObject;
+
     public enum onThis //What is on this piece
     {
         empty,
@@ -63,5 +65,15 @@ public class MapLocations : MonoBehaviour {
     public float getY_Location()
     {
         return yLocation;
+    }
+
+    public void setCurrentObjectEmpty()
+    {
+        currentObject = null;
+    }
+
+    public void setCurrentObject(GameObject newObject)
+    {
+        currentObject = newObject;
     }
 }

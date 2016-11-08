@@ -48,6 +48,24 @@ public class Selector : MonoBehaviour {
             print("This piece contains " + Manager.instance.boardLocation[xLocation, yLocation].GetComponent<MapLocations>().whatsInThis());
         }
 
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            string isTherePiece = Manager.instance.boardLocation[xLocation, yLocation].GetComponent<MapLocations>().whatsInThis();
+
+            if(isTherePiece != "empty")
+            {
+                if(isTherePiece == "Player1Leader" || isTherePiece == "Player2Leader")
+                {
+
+                }
+
+                if (isTherePiece == "Player1Attacker" || isTherePiece == "Player2Attacker")
+                {
+
+                }
+            }
+        }
+
 
     }
 }
